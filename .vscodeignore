@@ -1,0 +1,12 @@
+# Everything the extension does not need at runtime. VS Code packages a VSIX from
+# the working tree, so exclusions live here rather than in .gitattributes.
+.gitattributes
+.gitignore
+.vscode/**
+dev/**
+images/**
+samples/**
+screenshots/**
+test/**
+**/__pycache__/**
+**/*.pyc

@@ -1,0 +1,29 @@
+{
+  "Array Level 1": [
+    "Array Level 2",
+    [
+      "Array Level 3",
+      [
+        "Array Level 4",
+        [
+          "Array Level 5",
+          [
+            "Array Level 6",
+            [
+              "Array Level 7",
+              [
+                "Array Level 8",
+                [
+                  "Array Level 9",
+                  [
+                    "Array Level 10"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+}

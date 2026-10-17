@@ -1,0 +1,30 @@
+{
+  "Mixed Level 1": [
+    "Array Level 2",
+    [
+      "Array Level 3"
+    ],
+    {
+      "Object Level 3": [
+        "Array Level 4",
+        4.04,
+        {
+          "Object Level 5": [
+            false,
+            [
+              true,
+              {
+                "Object Level 8": [
+                  null,
+                  {
+                    "Object Level 10": "Value"
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

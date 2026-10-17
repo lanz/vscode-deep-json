@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Vulnerability Findings",
+    "version": "4.2.0"
+  },
+  "paths": {
+    "/assets/{assetId}/findings": {
+      "get": {
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "cve": { "type": "string", "example": "CVE-2026-1337" },
+                    "cvss": { "type": "number", "maximum": 10 },
+                    "exploit": {
+                      "type": "object",
+                      "properties": {
+                        "known": { "type": "boolean", "default": false },
+                        "maturity": {
+                          "type": "string",
+                          "enum": ["unproven", "functional", "weaponized"]
+                        }
+                      }
+                    },
+                    "exposure": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "port": { "type": "integer", "example": 443 },
+                          "protocol": { "type": "string", "default": "tcp" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": { "description": "Scanner credentials rejected" }
+        }
+      }
+    }
+  }
+}

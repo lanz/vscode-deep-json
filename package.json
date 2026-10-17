@@ -1,0 +1,252 @@
+{
+  "name": "deep-json-color-schemes",
+  "displayName": "Deep JSON Color Schemes",
+  "description": "Color themes that give every level of JSON nesting its own color. Four Monokai variants, Jazz Solo Cup and VS Code Dark, each with vivid or muted brackets.",
+  "version": "1.0.0",
+  "publisher": "lanz",
+  "license": "AGPL-3.0-or-later",
+  "author": {
+    "name": "Lance Duvall"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lanz/vscode-deep-json.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lanz/vscode-deep-json/issues"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "json",
+    "theme",
+    "color theme",
+    "monokai",
+    "openapi"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onLanguage:json",
+    "onLanguage:jsonc"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Deep JSON: Monokai Classic",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-classic-vivid-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Classic (Muted Brackets)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-classic-muted-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Chalk",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-chalk-vivid-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Chalk (Muted Brackets)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-chalk-muted-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Neon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-neon-vivid-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Neon (Muted Brackets)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-neon-muted-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Neue",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-neue-vivid-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Monokai Neue (Muted Brackets)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/monokai-neue-muted-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Jazz Solo Cup",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jazz-solo-cup-vivid-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: Jazz Solo Cup (Muted Brackets)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jazz-solo-cup-muted-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: VS Code Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vscode-dark-vivid-color-theme.json"
+      },
+      {
+        "label": "Deep JSON: VS Code Dark (Muted Brackets)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/vscode-dark-muted-color-theme.json"
+      }
+    ],
+    "semanticTokenModifiers": [
+      {
+        "id": "level1",
+        "description": "JSON nesting level 1, the outermost"
+      },
+      {
+        "id": "level2",
+        "description": "JSON nesting level 2"
+      },
+      {
+        "id": "level3",
+        "description": "JSON nesting level 3"
+      },
+      {
+        "id": "level4",
+        "description": "JSON nesting level 4"
+      },
+      {
+        "id": "level5",
+        "description": "JSON nesting level 5"
+      },
+      {
+        "id": "level6",
+        "description": "JSON nesting level 6"
+      },
+      {
+        "id": "level7",
+        "description": "JSON nesting level 7"
+      },
+      {
+        "id": "level8",
+        "description": "JSON nesting level 8"
+      },
+      {
+        "id": "level9",
+        "description": "JSON nesting level 9"
+      },
+      {
+        "id": "level10",
+        "description": "JSON nesting level 10"
+      },
+      {
+        "id": "level11",
+        "description": "JSON nesting level 11"
+      },
+      {
+        "id": "level12",
+        "description": "JSON nesting level 12"
+      },
+      {
+        "id": "level13",
+        "description": "JSON nesting level 13"
+      },
+      {
+        "id": "level14",
+        "description": "JSON nesting level 14"
+      },
+      {
+        "id": "level15",
+        "description": "JSON nesting level 15"
+      },
+      {
+        "id": "level16",
+        "description": "JSON nesting level 16"
+      },
+      {
+        "id": "level17",
+        "description": "JSON nesting level 17"
+      },
+      {
+        "id": "level18",
+        "description": "JSON nesting level 18"
+      },
+      {
+        "id": "level19",
+        "description": "JSON nesting level 19"
+      },
+      {
+        "id": "level20",
+        "description": "JSON nesting level 20, and deeper"
+      }
+    ],
+    "semanticTokenTypes": [
+      {
+        "id": "jsonPunctuation",
+        "superType": "operator",
+        "description": "A JSON brace or bracket, carrying the depth of the container it opens or closes."
+      }
+    ],
+    "semanticTokenScopes": [
+      {
+        "scopes": {
+          "jsonPunctuation": [
+            "punctuation.definition.dictionary.begin.json",
+            "punctuation"
+          ]
+        }
+      }
+    ],
+    "commands": [
+      {
+        "command": "jsonColorSchemes.bracketDepth",
+        "title": "Bracket Depth",
+        "category": "Deep JSON"
+      },
+      {
+        "command": "jsonColorSchemes.addDepthColors",
+        "title": "Add Depth Colors to Current Theme",
+        "category": "Deep JSON"
+      },
+      {
+        "command": "jsonColorSchemes.removeDepthColors",
+        "title": "Remove Depth Colors from Current Theme",
+        "category": "Deep JSON"
+      }
+    ],
+    "configuration": {
+      "title": "Deep JSON Color Schemes",
+      "properties": {
+        "jsonColorSchemes.deepBrackets": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "on",
+            "off"
+          ],
+          "enumDescriptions": [
+            "Color brackets by depth while one of these themes is active, and restore the built-in colorizer under any other theme.",
+            "Color brackets by depth whatever the active theme.",
+            "Leave brackets to VS Code's built-in colorizer, which cycles six colors."
+          ],
+          "default": "auto",
+          "markdownDescription": "How far JSON bracket colors should follow nesting depth.\n\nVS Code's built-in bracket colorizer has six color slots and repeats after level 6. Going further means suppressing it for JSON, which this does by setting `#editor.language.colorizedBracketPairs#` for `json` and `jsonc` in your user settings. A value you set yourself is never changed or removed."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "node test/test_scanner.js && node test/test_encode.js && node test/test_deep_brackets.js && node test/test_palette_customization.js && node test/test_themes.js",
+    "build-themes": "python dev/build_themes.py",
+    "package": "npx --prefer-offline --yes @vscode/vsce package",
+    "check-palettes": "python dev/check_palettes.py",
+    "capture-screenshots": "node dev/capture_screenshots.js",
+    "verify-screenshots": "python dev/verify_screenshots.py"
+  },
+  "configurationDefaults": {
+    "[json]": {
+      "editor.bracketPairColorization.enabled": false
+    },
+    "[jsonc]": {
+      "editor.bracketPairColorization.enabled": false
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "Object Level 1": {
+    "Object Level 2": {
+      "Object Level 3": {
+        "Object Level 4": {
+          "Object Level 5": {
+            "Object Level 6": {
+              "Object Level 7": {
+                "Object Level 8": {
+                  "Object Level 9": {
+                    "Object Level 10": "Value"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

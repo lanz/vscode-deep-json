@@ -428,7 +428,9 @@ arrive, and the bracket policy takes effect. Capture between any two of them and
 looks plausible but is wrong.
 
 `dev/verify_screenshots.py` then checks the written pixels against each theme's palette,
-for brackets as well as content. It needs Pillow; nothing else in `dev/` has a dependency.
+for brackets as well as content. It needs Pillow, as does `dev/make_icon.py`, which draws
+`images/icon.png` from the palette definitions so the icon cannot drift from the shipped
+colors. Nothing else in `dev/` has a dependency.
 
 There are four samples. `object.json`, `array.json` and `mixed.json` are synthetic: one
 token per line at a known depth, which is what makes a pixel check possible, since the
@@ -450,7 +452,7 @@ generated theme label list still matches the manifest.
 
 ## Credits
 
-Inspired by [Monokai JSON+](https://github.com/ColibriApps/MonokaiJsonPlus/) by ColibriApps.
+Inspired by [Monokai JSON+](https://github.com/ColibriApps/MonokaiJsonPlus/) by ColibriApps for Sublime Text 2.
 
 Monokai Classic is derived from the Monokai palette by Wimer Hazenberg.
 

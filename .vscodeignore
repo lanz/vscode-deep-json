@@ -5,6 +5,7 @@
 .vscode/**
 dev/**
 images/**
+!images/icon.png
 samples/**
 screenshots/**
 test/**

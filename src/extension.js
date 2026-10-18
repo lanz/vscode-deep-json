@@ -112,7 +112,7 @@ const provider = {
 
 const SETTING_SECTION = 'editor.language';
 const SETTING_KEY = 'colorizedBracketPairs';
-const POLICY_SECTION = 'jsonColorSchemes';
+const POLICY_SECTION = 'jsonColorThemes';
 const POLICY_KEY = 'deepBrackets';
 const NOTIFIED_KEY = 'deepBrackets.notified';
 const LANGUAGES = ['json', 'jsonc'];
@@ -173,7 +173,7 @@ async function reconcile(context) {
  *  should cost the brackets their depth coloring, not break activation. */
 function reconcileSoon(context) {
   reconcile(context).catch((error) => {
-    console.error('Deep JSON Color Schemes: bracket policy failed', error);
+    console.error('Deep JSON Color Themes: bracket policy failed', error);
   });
 }
 
@@ -399,15 +399,15 @@ function activate(context) {
   }
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonColorSchemes.bracketDepth', pickPolicy)
+    vscode.commands.registerCommand('jsonColorThemes.bracketDepth', pickPolicy)
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonColorSchemes.addDepthColors', (label) =>
+    vscode.commands.registerCommand('jsonColorThemes.addDepthColors', (label) =>
       addDepthColors(context, label).catch((error) => {
         // both, deliberately: the notification is for the user, the log line is
         // what makes a failure diagnosable afterwards
-        console.error('Deep JSON Color Schemes: adding depth colors failed', error);
+        console.error('Deep JSON Color Themes: adding depth colors failed', error);
         vscode.window.showErrorMessage(
           'Deep JSON could not add those depth colors: ' + error.message
         );
@@ -416,9 +416,9 @@ function activate(context) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonColorSchemes.removeDepthColors', () =>
+    vscode.commands.registerCommand('jsonColorThemes.removeDepthColors', () =>
       removeDepthColors(context).catch((error) => {
-        console.error('Deep JSON Color Schemes: removing depth colors failed', error);
+        console.error('Deep JSON Color Themes: removing depth colors failed', error);
         vscode.window.showErrorMessage(
           'Deep JSON could not remove those depth colors: ' + error.message
         );

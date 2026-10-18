@@ -1,4 +1,4 @@
-# Deep JSON Color Schemes
+# Deep JSON Color Themes
 
 Color themes that give every level of JSON nesting its own color, so you can see at a
 glance which level a piece of content belongs to. Six palettes are included, each in
@@ -227,12 +227,12 @@ from another extension:
 [
   {
     "key": "ctrl+k j",
-    "command": "jsonColorSchemes.addDepthColors",
+    "command": "jsonColorThemes.addDepthColors",
     "args": "Deep JSON: Monokai Chalk"
   },
   {
     "key": "ctrl+k shift+j",
-    "command": "jsonColorSchemes.removeDepthColors"
+    "command": "jsonColorThemes.removeDepthColors"
   }
 ]
 ```
@@ -245,7 +245,7 @@ To write the settings yourself instead, each theme under `themes/` keeps its pal
 `semanticTokenColors` block; copy that into `editor.semanticTokenColorCustomizations` under
 `"[Your Theme Name]"` alongside `"enabled": true`. The theme name has to match its label
 exactly, which is the part worth letting the command do for you. Brackets then need
-`jsonColorSchemes.deepBrackets` set to `on`, because `auto` only suppresses VS Code's own
+`jsonColorThemes.deepBrackets` set to `on`, because `auto` only suppresses VS Code's own
 colorizer while one of these themes is active; see *Bracket coloring* below.
 
 *Developer: Inspect Editor Tokens and Scopes* shows which semantic token and which of your
@@ -268,7 +268,7 @@ VS Code's own bracket colorizer has six color slots and repeats after level 6, s
 brackets to depth any deeper means getting it out of the way for JSON. Run *Deep JSON:
 Bracket Depth* from the Command Palette to choose when that happens:
 
-| `jsonColorSchemes.deepBrackets` | Behavior |
+| `jsonColorThemes.deepBrackets` | Behavior |
 | --- | --- |
 | `auto` (default) | Depth coloring while one of these themes is active, built-in colorizer under any other |
 | `on` | Depth coloring whatever the active theme |
@@ -301,7 +301,7 @@ chrome rather than as tokens, so there is nothing for a per-level rule to attach
 ## Markdown highlighting
 
 These are complete color themes rather than JSON-only ones, so they color every language
-you open; JSON is just the part that gets depth coloring. The color schemes also add a full
+you open; JSON is just the part that gets depth coloring. The themes also add a full
 rule set for markdown in all six palettes: headings, emphasis, inline and fenced code, quotes,
 links, lists, tables, and the punctuation around them.
 
@@ -415,6 +415,7 @@ python dev/build_themes.py      # regenerate themes/ from dev/palettes.py
 python dev/check_palettes.py    # compare against the Sublime repo, if checked out
 npm test                        # scanner, encoder, policy, palette and theme tests
 npm run package                 # build the .vsix, which the capture harness installs
+                                # needs vsce: npm i -g @vscode/vsce
 npm run capture-screenshots     # regenerate screenshots/ from the editor itself
 npm run verify-screenshots      # check those images against the palettes
 ```

@@ -93,7 +93,7 @@ function writeSettings(themeLabel) {
     'workbench.colorTheme': themeLabel,
     // the shipped default, so the screenshots show default behavior and every run
     // re-tests the reconciler
-    'jsonColorSchemes.deepBrackets': 'auto',
+    'jsonColorThemes.deepBrackets': 'auto',
     'editor.fontFamily': 'Consolas, monospace',
     'editor.fontSize': FONT_SIZE,
     'editor.semanticHighlighting.enabled': true,

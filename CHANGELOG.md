@@ -33,7 +33,7 @@ or called from another extension.
 
 Brackets and braces follow depth too. VS Code's built-in bracket colorizer has
 six color slots and repeats after level 6, so matching brackets any deeper means
-suppressing it for JSON. `jsonColorSchemes.deepBrackets` controls when that
+suppressing it for JSON. `jsonColorThemes.deepBrackets` controls when that
 happens, defaulting to following the active theme, and the *Deep JSON: Bracket Depth*
 command switches between the three modes. A
 `editor.language.colorizedBracketPairs` value you set yourself is never changed

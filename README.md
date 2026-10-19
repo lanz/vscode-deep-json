@@ -227,12 +227,12 @@ from another extension:
 [
   {
     "key": "ctrl+k j",
-    "command": "jsonColorThemes.addDepthColors",
+    "command": "deepJson.addDepthColors",
     "args": "Deep JSON: Monokai Chalk"
   },
   {
     "key": "ctrl+k shift+j",
-    "command": "jsonColorThemes.removeDepthColors"
+    "command": "deepJson.removeDepthColors"
   }
 ]
 ```
@@ -245,7 +245,7 @@ To write the settings yourself instead, each theme under `themes/` keeps its pal
 `semanticTokenColors` block; copy that into `editor.semanticTokenColorCustomizations` under
 `"[Your Theme Name]"` alongside `"enabled": true`. The theme name has to match its label
 exactly, which is the part worth letting the command do for you. Brackets then need
-`jsonColorThemes.deepBrackets` set to `on`, because `auto` only suppresses VS Code's own
+`deepJson.deepBrackets` set to `on`, because `auto` only suppresses VS Code's own
 colorizer while one of these themes is active; see *Bracket coloring* below.
 
 *Developer: Inspect Editor Tokens and Scopes* shows which semantic token and which of your
@@ -268,7 +268,7 @@ VS Code's own bracket colorizer has six color slots and repeats after level 6, s
 brackets to depth any deeper means getting it out of the way for JSON. Run *Deep JSON:
 Bracket Depth* from the Command Palette to choose when that happens:
 
-| `jsonColorThemes.deepBrackets` | Behavior |
+| `deepJson.deepBrackets` | Behavior |
 | --- | --- |
 | `auto` (default) | Depth coloring while one of these themes is active, built-in colorizer under any other |
 | `on` | Depth coloring whatever the active theme |

@@ -59,7 +59,19 @@ const THEME_DIRS = require(path.join(__dirname, 'theme_dirs.json'));
 const MANIFEST = JSON.parse(
   fs.readFileSync(path.join(REPO, 'package.json'), 'utf8')
 );
-const VSIX = path.join(REPO, MANIFEST.name + '-' + MANIFEST.version + '.vsix');
+// The one VSIX in the repository root, whatever it is called. dev/package.js
+// names it after the display name rather than the extension id, and clears any
+// other, so reconstructing the name here would just be a second place to keep it.
+const VSIX = (() => {
+  const found = fs.readdirSync(REPO).filter((f) => f.endsWith('.vsix'));
+  if (found.length > 1) {
+    throw new Error(
+      'more than one VSIX in ' + REPO + ': ' + found.join(', ') +
+        '\n  delete the stale ones, or run:  npm run package'
+    );
+  }
+  return found.length ? path.join(REPO, found[0]) : path.join(REPO, 'extension.vsix');
+})();
 const MAX_LEVEL = 20;
 
 const CODE_EXE =
@@ -93,7 +105,7 @@ function writeSettings(themeLabel) {
     'workbench.colorTheme': themeLabel,
     // the shipped default, so the screenshots show default behavior and every run
     // re-tests the reconciler
-    'jsonColorThemes.deepBrackets': 'auto',
+    'deepJson.deepBrackets': 'auto',
     'editor.fontFamily': 'Consolas, monospace',
     'editor.fontSize': FONT_SIZE,
     'editor.semanticHighlighting.enabled': true,

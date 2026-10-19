@@ -1,9 +1,10 @@
 # Change Log
 
-## 1.0.0
+## 2.0.0
 
-First release. Six palettes that give every level of JSON nesting its own color,
-ported from my Sublime Text schemes of the same names.
+First release, numbered to match the Sublime Text package it is ported from rather
+than starting over at 1.0.0. Six palettes that give every level of JSON nesting its
+own color, ported from my Sublime Text schemes of the same names.
 
 - Deep JSON: Monokai Classic
 - Deep JSON: Monokai Chalk
@@ -33,7 +34,7 @@ or called from another extension.
 
 Brackets and braces follow depth too. VS Code's built-in bracket colorizer has
 six color slots and repeats after level 6, so matching brackets any deeper means
-suppressing it for JSON. `jsonColorThemes.deepBrackets` controls when that
+suppressing it for JSON. `deepJson.deepBrackets` controls when that
 happens, defaulting to following the active theme, and the *Deep JSON: Bracket Depth*
 command switches between the three modes. A
 `editor.language.colorizedBracketPairs` value you set yourself is never changed

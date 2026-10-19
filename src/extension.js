@@ -112,7 +112,7 @@ const provider = {
 
 const SETTING_SECTION = 'editor.language';
 const SETTING_KEY = 'colorizedBracketPairs';
-const POLICY_SECTION = 'jsonColorThemes';
+const POLICY_SECTION = 'deepJson';
 const POLICY_KEY = 'deepBrackets';
 const NOTIFIED_KEY = 'deepBrackets.notified';
 const LANGUAGES = ['json', 'jsonc'];
@@ -399,11 +399,11 @@ function activate(context) {
   }
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonColorThemes.bracketDepth', pickPolicy)
+    vscode.commands.registerCommand('deepJson.bracketDepth', pickPolicy)
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonColorThemes.addDepthColors', (label) =>
+    vscode.commands.registerCommand('deepJson.addDepthColors', (label) =>
       addDepthColors(context, label).catch((error) => {
         // both, deliberately: the notification is for the user, the log line is
         // what makes a failure diagnosable afterwards
@@ -416,7 +416,7 @@ function activate(context) {
   );
 
   context.subscriptions.push(
-    vscode.commands.registerCommand('jsonColorThemes.removeDepthColors', () =>
+    vscode.commands.registerCommand('deepJson.removeDepthColors', () =>
       removeDepthColors(context).catch((error) => {
         console.error('Deep JSON Color Themes: removing depth colors failed', error);
         vscode.window.showErrorMessage(

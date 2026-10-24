@@ -1,19 +1,19 @@
 'use strict';
 
 /**
- * Build the VSIX, named after the display name rather than the extension id.
+ * Build the VSIX, under the product's full name.
  *
- * vsce names the file <name>-<version>.vsix. `name` is the Marketplace identity,
- * and ours is the shorter deep-json-themes because the Marketplace reserves an id
- * permanently once it has been published: deep-json-color-themes was taken, then
- * unpublished, and cannot be used again. The display name kept the longer form,
- * so the artifact is named from that instead.
+ * vsce names the file <name>-<version>.vsix, after the Marketplace identity. The
+ * Marketplace reserves both an id and a display name permanently once they have
+ * been published, and deep-json-color-themes was published and then unpublished,
+ * which took both of its forms with it. So the id is deep-json and the display
+ * name is Deep JSON, and the artifact is where the full name still fits.
  *
  * Nothing reads the filename. The Marketplace takes the identity from the
  * manifest and `code --install-extension` treats it as a path, so this is purely
  * so the file on disk reads as the product. dev/capture_screenshots.js finds it by
  * looking for the one VSIX in the repository root rather than by reconstructing
- * this name, which keeps one source of truth for it.
+ * the name, so it stays written in one place.
  *
  * Run:  npm run package
  *
@@ -33,11 +33,12 @@ const MANIFEST = JSON.parse(
   fs.readFileSync(path.join(REPO, 'package.json'), 'utf8')
 );
 
-function slug(text) {
-  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
+// Pinned, not derived. The display name is "Deep JSON" and the extension id is
+// deep-json, because the Marketplace had already reserved both longer forms;
+// naming the artifact for the product keeps the full name somewhere it is free.
+const ARTIFACT = 'deep-json-color-themes';
 
-const out = slug(MANIFEST.displayName) + '-' + MANIFEST.version + '.vsix';
+const out = ARTIFACT + '-' + MANIFEST.version + '.vsix';
 
 // Stale artifacts under other names would make "the one VSIX in the root"
 // ambiguous, and the capture harness refuses to guess between them.

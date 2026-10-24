@@ -60,8 +60,8 @@ const MANIFEST = JSON.parse(
   fs.readFileSync(path.join(REPO, 'package.json'), 'utf8')
 );
 // The one VSIX in the repository root, whatever it is called. dev/package.js
-// names it after the display name rather than the extension id, and clears any
-// other, so reconstructing the name here would just be a second place to keep it.
+// decides that name and clears any other, so reconstructing it here would just be
+// a second place to keep it.
 const VSIX = (() => {
   const found = fs.readdirSync(REPO).filter((f) => f.endsWith('.vsix'));
   if (found.length > 1) {
@@ -74,9 +74,37 @@ const VSIX = (() => {
 })();
 const MAX_LEVEL = 20;
 
-const CODE_EXE =
-  process.env.VSCODE_EXE ||
-  path.join(process.env.LOCALAPPDATA, 'Programs', 'Microsoft VS Code', 'Code.exe');
+/**
+ * Where VS Code is installed.
+ *
+ * It can be per-user or system-wide, and VSCodium is a drop-in for these
+ * purposes, so the install is searched for rather than assumed. This mirrors
+ * SEARCH_ROOTS in dev/extract_vscode_dark_base.py; a hardcoded per-user path here
+ * broke the moment the editor was reinstalled for all users. VSCODE_EXE still
+ * overrides, for an install somewhere else entirely.
+ */
+function findCode() {
+  if (process.env.VSCODE_EXE) return process.env.VSCODE_EXE;
+  const roots = [
+    [process.env.LOCALAPPDATA, 'Programs', 'Microsoft VS Code', 'Code.exe'],
+    [process.env.ProgramFiles, 'Microsoft VS Code', 'Code.exe'],
+    [process.env['ProgramFiles(x86)'], 'Microsoft VS Code', 'Code.exe'],
+    [process.env.LOCALAPPDATA, 'Programs', 'VSCodium', 'VSCodium.exe'],
+    [process.env.ProgramFiles, 'VSCodium', 'VSCodium.exe'],
+  ];
+  for (const parts of roots) {
+    if (!parts[0]) continue;
+    const candidate = path.join(...parts);
+    if (fs.existsSync(candidate)) return candidate;
+  }
+  throw new Error(
+    'could not find VS Code. Looked in:\n  ' +
+    roots.filter((p) => p[0]).map((p) => path.join(...p)).join('\n  ') +
+    '\n  Set VSCODE_EXE to the executable to use another install.'
+  );
+}
+
+const CODE_EXE = findCode();
 
 const TMP = path.join(os.tmpdir(), 'vsc-shots');
 const USER_DATA = path.join(TMP, 'user-data');

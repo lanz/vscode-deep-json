@@ -1,6 +1,6 @@
 {
   "name": "deep-json",
-  "displayName": "Deep JSON Color Themes",
+  "displayName": "Deep JSON",
   "description": "Color themes that give every level of JSON nesting its own color. Four Monokai variants, Jazz Solo Cup and VS Code Dark, each with vivid or muted brackets.",
   "version": "2.0.0",
   "publisher": "lanz",
